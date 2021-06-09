@@ -1,0 +1,26 @@
+{
+	"personen": [
+		{
+			"person": {
+				"vorname": "paul",
+				"nachname": "Paulsen",
+				"anrede": "Herr",
+				"pic": ""
+			}
+		},
+		{
+			"person": {
+				"vorname": "Micki",
+				"nachname": "Maus",
+				"anrede": "Herr"
+			}
+		},
+		{
+			"person": {
+				"vorname": "Paulina",
+				"nachname": "Paulsen",
+				"anrede": "Frau"
+			}
+		}
+	]
+}

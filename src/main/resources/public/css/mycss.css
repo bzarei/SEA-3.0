@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body {
+	
+	font-family: var(--bs-font-sans-serif);
+		--bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue";
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+}
+
+table {
+	caption-side: bottom;
+	border-collapse: collapse;
+	box-sizing: border-box;
+	vertical-align: middle;
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #212529;
+	vertical-align: top;
+	border-color: #dee2e6;
+}
+
+th,td {
+	border: 1px solid #cccccc;
+}
