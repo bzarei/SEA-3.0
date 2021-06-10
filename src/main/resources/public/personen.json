@@ -1,19 +1,19 @@
 {
 	"personen": [
 		{
-				"vorname": "Paul",
-				"nachname": "Paulsen",
-				"anrede": "Herr"
+				"anrede": "Frau",
+				"vorname": "Salma",
+				"nachname": "Alizadeh"
 		},
 		{
-				"vorname": "Micki",
-				"nachname": "Maus",
-				"anrede": "Herr"
+				"anrede": "Herr",
+				"vorname": "Bobi",
+				"nachname": "Zamani"
 		},
 		{
-				"vorname": "Paulina",
-				"nachname": "Paulsen",
-				"anrede": "Frau"
+				"anrede": "",
+				"vorname": "Otto",
+				"nachname": "Magler"
 		}
 	]
 }
