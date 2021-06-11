@@ -9,14 +9,14 @@ para.textContent = "Hello from JavaScript";
 //		.then(myjson => console.log(myjson.personen[0].vorname));// json einlesen
 
 function getPic(anrede) {
-	switch(anrede) {
+	switch (anrede) {
 		case "Herr":
 			return 'images/man.png';
 		case "Frau":
 			return 'images/frau.png';
 		default:
 			return 'images/fragezeichen.png';
-	} 
+	}
 }
 
 function getJson(meta) { 	// meta beinhaltet json mit allen kommunikations-metadaten
@@ -25,14 +25,14 @@ function getJson(meta) { 	// meta beinhaltet json mit allen kommunikations-metad
 
 // celle ersetzen
 function getTxtFromJsonUndPackInsHTML(myjson) {
-	
+
 	var tabelle = document.getElementById("tid001");
-	var i=0;
-	for (var laufvariable of myjson.personen) {	
-		tabelle.insertAdjacentHTML("beforeend", 
+	var i = 0;
+	for (var laufvariable of myjson.personen) {
+		tabelle.insertAdjacentHTML("beforeend",
 			"<tr>"
-			+ `<td> ${++i} </td>`     
-			+ "<td><img src='" + getPic(laufvariable.anrede) +"'></td>"
+			+ `<td> ${++i} </td>`
+			+ "<td><img src='" + getPic(laufvariable.anrede) + "'></td>"
 			+ "<td>" + laufvariable.anrede + "</td>"
 			+ "<td>" + laufvariable.vorname + "</td>"
 			+ "<td>" + laufvariable.nachname + "</td>"
@@ -41,7 +41,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 		//	document.getElementById("IdVornameMicki").textContent = laufvariable.vorname;
 		//	document.getElementById("IdNachnameMaus").textContent = laufvariable.nachname;
 	}
-} 
+}
 
 fetch("personen.json")
 	.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
