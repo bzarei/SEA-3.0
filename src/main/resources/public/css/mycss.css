@@ -1,13 +1,23 @@
 @charset "UTF-8";
 
 body {
-	
-	font-family: var(--bs-font-sans-serif);
-		--bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue";
+	font-family: var(- -bs-font-sans-serif);
+	-bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans";
 	font-size: 1rem;
 	line-height: 1.5;
 	color: #212529;
-	background-color: #fff;
+	background-color: #eeeeec;
+}
+
+h2 { text-align: center; }
+
+h4 { text-align: center; }
+
+p,a { color: #fd0ae3; }
+
+form {
+	text-align: center;
 }
 
 table {
@@ -17,11 +27,13 @@ table {
 	vertical-align: middle;
 	width: 100%;
 	margin-bottom: 1rem;
-	color: #212529;
+	color: #204a87;
 	vertical-align: top;
-	border-color: #dee2e6;
+	border-color: #888a85;
+	background-color: #ffffff;
 }
 
-th,td {
-	border: 1px solid #cccccc;
+th, td {
+	border: 1px solid #bbc0b8;
+	text-align: center;
 }
