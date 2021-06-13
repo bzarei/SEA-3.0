@@ -6,9 +6,7 @@
 <link rel="stylesheet" href="css/skeleton.css">
 -->
 <link rel="stylesheet" href="css/mycss.css">
-<!-- 
 <link rel=“icon” href=“favicon.ico” type=“image/gif” sizes=“16x16">
--->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SEA Kurs</title>
@@ -17,30 +15,21 @@
 
 </head>
 <body>
-	<h1>Gruppe SEA - Welle 4</h1>
-	<p>Liste der Personen:</p>
-
+	<h2>Gruppe SEA - Welle 4</h2>
 	<table class="table table-dark" id="tid001">
 		<tr>
 			<th>Id</th>
-			<th>Pic</th>
+			<th>Gender</th>
 			<th>Anrede</th>
 			<th>Vorname</th>
 			<th>Nachname</th>
 		</tr>
-<!-- 		<tr>
+<!--    <tr>
 			<td>01</td>
 			<td><img src="images/frau.png"></td>
 			<td>Frau</td>
 			<td>Sabine</td>
 			<td>Müller</td>
-		</tr>
-		<tr>
-			<td>02</td>
-			<td><img src="images/man.png"></td>
-			<td>Herr</td>
-			<td>Paul</td>
-			<td>Paulsen</td>
 		</tr>
 		<tr>
 			<td>03</td>
@@ -49,10 +38,29 @@
 			<td id="IdVornameMicki">Micki</td>
 			<td id="IdNachnameMaus">Maus</td>
 		</tr>
--->		
+-->
 	</table>
-	
-	<p id="id4711">Abschnitt 2</p>	
-	
+	<article>		
+		<h4>Jetzt hier bei uns anmelden!</h4>
+			<form id="submit">
+				<label for="id001">Anrede:</label>
+				<select name="anrede" id="id001">
+					<option value="frau">Frau</option>
+					<option value="herr">Herr</option>
+					<option value="sonst">Sonstiges</option>
+				</select>
+				<label for="id002">Vorname:</label>
+				<input type="text" id="id002" name="vorname"> 
+				<label for="id003">Nachname:</label>
+				<input type="text" id="id003" name="nachname">
+				<br><br>
+				<input type="submit" id="id004" value="Submit">
+			</form>
+	</article>
+	<!-- p id="id004">Abschnitt #2</p   --> 
+	<br><br><br><br><br><br><br><br><br>  
+	<a href="https://www.telekom.de/start" id="id4711">
+		<botton>Werbung</botton>	
+	</a>
 </body>
 </html>
