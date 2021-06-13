@@ -1,6 +1,6 @@
 // suche nach eindeutige id=id4711 in index.html
 var para = document.getElementById("id4711");
-para.textContent = ">>>>>>> Erleben, was verbindet!";
+para.textContent = "Erleben, was verbindet!";
 
 //  fetch("http://localhost:8080/personen.json");
 //  var cell = document.getElementById("IdSabine");

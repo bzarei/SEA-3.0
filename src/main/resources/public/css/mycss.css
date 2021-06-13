@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* Style of body */
 body {
 	font-family: var(- -bs-font-sans-serif);
 	-bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
@@ -14,12 +15,14 @@ h2 { text-align: center; }
 
 h4 { text-align: center; }
 
-p,a { color: #fd0ae3; }
+p,a { color: #f9076d; }
 
+/* Style of form */
 form {
 	text-align: center;
 }
 
+/* Style of table */
 table {
 	caption-side: bottom;
 	border-collapse: collapse;
@@ -35,7 +38,7 @@ table {
 
 th {
 	border: 1px solid #bbc0b8;
-	background-color: #f74b9d;
+	background-color: #f9076d;
 	color: #ffffff;	
 }
 
@@ -44,13 +47,14 @@ td {
 	text-align: center;
 }
 
+/* Style of blinking text */
 .blink {
     animation-name: animation_blink;
     animation-timing-function: ease-in;
     animation-duration: 2s; 
-    animation-iteration-count: infinite;            
+    animation-iteration-count: infinite;
+    color: #f9076d;            
 }
-
 @keyframes animation_blink {
     0% { opacity: 1; }
     50% { opacity: 0.1; }
