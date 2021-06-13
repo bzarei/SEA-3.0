@@ -33,7 +33,26 @@ table {
 	background-color: #ffffff;
 }
 
-th, td {
+th {
+	border: 1px solid #bbc0b8;
+	background-color: #f74b9d;
+	color: #ffffff;	
+}
+
+td {
 	border: 1px solid #bbc0b8;
 	text-align: center;
+}
+
+.blink {
+    animation-name: animation_blink;
+    animation-timing-function: ease-in;
+    animation-duration: 2s; 
+    animation-iteration-count: infinite;            
+}
+
+@keyframes animation_blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.1; }
+    100% { opacity: 1; }    
 }

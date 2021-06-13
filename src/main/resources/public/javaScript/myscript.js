@@ -1,6 +1,6 @@
 // suche nach eindeutige id=id4711 in index.html
 var para = document.getElementById("id4711");
-para.textContent = "Erleben, was verbindet!";
+para.textContent = ">>>>>>> Erleben, was verbindet!";
 
 //  fetch("http://localhost:8080/personen.json");
 //  var cell = document.getElementById("IdSabine");
@@ -17,10 +17,6 @@ function getImg(anrede) {
 		default:
 			return 'images/fragezeichen_.png';
 	}
-}
-
-function getJson(meta) { 	// meta beinhaltet json mit allen kommunikations-metadaten
-	return meta.json();	    // meta.json ist der reine json-inhalt
 }
 
 function oninputclick(event) {   // bei event-click
@@ -48,30 +44,34 @@ function oninputclick(event) {   // bei event-click
 
 var input = document.getElementById("id004");
 input.addEventListener("click",oninputclick);
-	
-	// celle ersetzen
-	function getTxtFromJsonUndPackInsHTML(myjson) {
 
-		var tabelle = document.getElementById("tid001");
-		var i = 0;
-		for (var laufvariable of myjson.personen) {
-			tabelle.insertAdjacentHTML("beforeend",
-				"<tr>"
-				+ `<td> ${++i} </td>`
-				+ "<td><img src='" + getImg(laufvariable.anrede) + "'></td>"
-				+ "<td>" + laufvariable.anrede + "</td>"
-				+ "<td>" + laufvariable.vorname + "</td>"
-				+ "<td>" + laufvariable.nachname + "</td>"
-				+ "</tr>")
+function getJson(meta) { 	// meta beinhaltet json mit allen kommunikations-metadaten
+	return meta.json();	    // meta.json ist der reine json-inhalt
+}
+
+// Eine Zelle ersetzen
+function getTxtFromJsonUndPackInsHTML(myjson) {
+
+	var tabelle = document.getElementById("tid001");
+	var i = 0;
+	for (var laufvariable of myjson.personen) {
+		tabelle.insertAdjacentHTML("beforeend",
+			"<tr>"
+			+ `<td> ${++i} </td>`
+			+ "<td><img src='" + getImg(laufvariable.anrede) + "'></td>"
+			+ "<td>" + laufvariable.anrede + "</td>"
+			+ "<td>" + laufvariable.vorname + "</td>"
+			+ "<td>" + laufvariable.nachname + "</td>"
+			+ "</tr>")
 			//	document.getElementById("IdAnredeHerr").textContent = laufvariable.anrede;
 			//	document.getElementById("IdVornameMicki").textContent = laufvariable.vorname;
 			//	document.getElementById("IdNachnameMaus").textContent = laufvariable.nachname;
-		}
 	}
+}
 
-	fetch("http://localhost:8080/personen.json")
-		.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
-		.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);
+fetch("http://localhost:8080/personen.json")
+	.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
+	.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);
 		
 		
 		
