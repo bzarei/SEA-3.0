@@ -69,7 +69,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 	}
 }
 
-fetch("http://localhost:8080/personen.json")
+fetch("http://localhost:8080/personen")
 	.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);
 		
