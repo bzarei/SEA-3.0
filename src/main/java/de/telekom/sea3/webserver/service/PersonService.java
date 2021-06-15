@@ -15,8 +15,6 @@ public class PersonService {
 	public PersonService(PersonRepository personRepository) {
 		super();
 		this.personRepository = personRepository;
-		System.out.println("PersonService wird instanziert: " + this.toString());
-		System.out.println("Personrepository wird instanziert: " + personRepository.toString());
 	}
 	
 	public int getSize() {

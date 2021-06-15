@@ -14,6 +14,7 @@ public class PersonHtmlController {
 			+ "<html lang=de>\n"
 			+ "<head>\n"
 			+ "<meta charset=utf-8>\n"
+			+ "<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"images/favicon.ico\">"
 			+ "<title>Title</title>\n"
 			+ "</head>\n"
 			+ "<body>size: %d</body>"
@@ -26,9 +27,9 @@ public class PersonHtmlController {
 		this.personService = personService;
 	}
 	
-	@GetMapping("/size")  // URL: "http://localhost:8080/size"  über diese Url wird die Methode size erreicht
-	@ResponseBody  // somit sagen wir dem Spring dass die Rückgabe-html String die Antwort in body ist
-	public String getSize() {  // String als RückgabeTyp weil Rückgabe ein html ist 
+	@GetMapping("/size")  // URL: "http://localhost:8080/size"  über diese Url wird die Methode getSize() erreicht
+	@ResponseBody         // somit sagen wir dem Spring dass die Rückgabe-html String die Antwort in body ist
+	public String getSize() {  // Rückgabe ist html 
 
 		String str = String.format(HTML_TEMPLATE, personService.getSize());
 		return str;

@@ -19,9 +19,9 @@ public class PersonRestController {
 		this.personService = personService;
 	}
 	
-	@GetMapping("/personen")  // URL: "http://localhost:8080/personen"  
+	@GetMapping("/personen")         // URL: "http://localhost:8080/personen"  
 	@ResponseBody
-	public String getAllPersons() {  // String als RückgabeTyp weil Rückgabe ein html ist 
+	public String getAllPersons() {  
 		
 		Personen personen = personService.getPersons();
 //		personen.toJson();
