@@ -30,5 +30,4 @@ public class Person {
 	public void setNachname(String nachname) {
 		this.nachname = nachname;
 	}
-
 }

@@ -1,11 +1,13 @@
 package de.telekom.sea3.webserver.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import de.telekom.sea3.webserver.model.Person;
 import de.telekom.sea3.webserver.model.Personen;
 import de.telekom.sea3.webserver.model.Size;
@@ -47,6 +49,24 @@ public class PersonRestController {
 	@GetMapping("/json/person/{id}")  
 	public Person getPerson(@PathVariable("id") int id) {
 		return personService.get(id);
+	}
+	
+	/**
+	 * @see <a href="http://localhost:8080/json/person">http://localhost:8080/json/person</a>
+	 * @return
+	 */
+	@PostMapping("/json/person")  
+	public Person addPerson(@RequestBody Person person) {
+		return personService.add(person);
+	}
+	
+	/**
+	 * @see <a href="http://localhost:8080/json/person">http://localhost:8080/json/person</a>
+	 * @return
+	 */
+	@DeleteMapping("/json/person")  
+	public Person removePerson(@RequestBody Person person) {
+		return personService.remove(person);
 	}
 	
 }

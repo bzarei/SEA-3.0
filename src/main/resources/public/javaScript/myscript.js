@@ -14,6 +14,8 @@ function getImg(anrede) {
 			return 'images/man_.png';
 		case "Frau":
 			return 'images/frau_.png';
+		case "Sonstiges":
+			return 'images/fragezeichen_.png';
 		default:
 			return 'images/fragezeichen_.png';
 	}
@@ -30,10 +32,10 @@ function oninputclick(event) {   // bei event-click
 	var nachname = document.getElementById("id003").value;
 	console.log(nachname);
 	
-	var jsonDataString = `{"anrede": ${anrede}, "vorname": "${vorname}", "nachname": "${nachname}"}`;
+	var jsonDataString = `{"anrede": "${anrede}", "vorname": "${vorname}", "nachname": "${nachname}"}`;
 		console.log(jsonDataString);
 		
-	fetch("http://localhost:8080/submitPerson", {
+	fetch("http://localhost:8080/json/person", {
 		method: 'POST',  // oder PUT
 		body: jsonDataString,
 		headers: {
@@ -69,7 +71,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 	}
 }
 
-fetch("http://localhost:8080/personen")
+fetch("http://localhost:8080/json/persons/all")
 	.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);
 		

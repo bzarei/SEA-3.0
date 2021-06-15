@@ -23,10 +23,23 @@ public class PersonService {
 	}
 	
 	public Personen getPersons() {
-		return new Personen();
+		return new Personen(personRepository.getAll());
 	}
 	
 	public Person get(int id) {
 		return new Person("Herr", "Max", "Muster");
 	}
+	
+	public Person add(Person person) {
+		System.out.println("Person wurde angelegt.");
+		personRepository.add(person);
+		return person;
+	}
+
+	public Person remove(Person person) {
+		System.out.println("Person wurde gelöscht.");
+		personRepository.remove(person);
+		return person;
+	}
+	
 }

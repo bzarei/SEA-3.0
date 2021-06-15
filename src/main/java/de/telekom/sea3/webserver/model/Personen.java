@@ -10,6 +10,10 @@ public class Personen {
 	public List<Person> getPersonen() {
 		return personen;
 	}
+	
+	public Personen(List<Person> all) {
+		this.personen = all;
+	}
 
 	public void setPersonen(List<Person> personen) {
 		this.personen = personen;
