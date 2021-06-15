@@ -24,22 +24,13 @@ public class PersonHtmlController {
 	public PersonHtmlController(PersonService personService) {
 		super();
 		this.personService = personService;
-		System.out.println("PersonController wird instanziert: " + this.toString());
-		System.out.println("PersonService wird instanziert: " + personService.toString());
-		
 	}
 	
 	@GetMapping("/size")  // URL: "http://localhost:8080/size"  über diese Url wird die Methode size erreicht
 	@ResponseBody  // somit sagen wir dem Spring dass die Rückgabe-html String die Antwort in body ist
 	public String getSize() {  // String als RückgabeTyp weil Rückgabe ein html ist 
-		
-//      Verschiedene Formen wie man aus einem Integer Wert ein String baut 
-//		String str1 = Integer.toString(personService.getSize());
-//		String str2 = String.valueOf(0);
-//		String str3 = "" + personService.getSize();
-//		String str4 = String.format("%d", personService.getSize());
-		String str5 = String.format(HTML_TEMPLATE, personService.getSize());
-		
-		return str5;
+
+		String str = String.format(HTML_TEMPLATE, personService.getSize());
+		return str;
 	}
 }
