@@ -30,8 +30,6 @@ public class PersonHtmlController {
 	@GetMapping("/size")  // URL: "http://localhost:8080/size"  über diese Url wird die Methode getSize() erreicht
 	@ResponseBody         // somit sagen wir dem Spring dass die Rückgabe-html String die Antwort in body ist
 	public String getSize() {  // Rückgabe ist html 
-
-		String str = String.format(HTML_TEMPLATE, personService.getSize());
-		return str;
+		return String.format(HTML_TEMPLATE, personService.getSize());
 	}
 }

@@ -6,6 +6,12 @@ public class Person {
 	private String vorname;
 	private String nachname;
 	
+	public Person(String anrede, String vorname, String nachname) {
+		this.anrede = anrede;
+		this.vorname = vorname;
+		this.nachname = nachname;
+	}
+	
 	public String getAnrede() {
 		return anrede;
 	}
