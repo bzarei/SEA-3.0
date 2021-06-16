@@ -26,7 +26,7 @@ public class PersonService {
 	}
 	
 	public Person get(int id) {
-		return new Person(1, "Herr", "Max", "Muster");
+		return new Person(1, "Herr", "Max", "Mustermann", "10-12-1980", "Bonn", "Max.Mustermann@telekom.de");
 	}
 	
 	public Person add(Person person) {
@@ -39,4 +39,7 @@ public class PersonService {
 		personRepository.remove(id);
 	}
 	
+//	public Person update(Integer id, Person p) {
+//		return personRepository.update(id,p);
+//	}
 }

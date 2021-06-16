@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-<!-- 
-<link rel="stylesheet" href="css/normalize.css">
--->
-<link rel="stylesheet" href="css/mycss.css">
-<!-- link rel=“icon” href=“images/favicon.ico” type=“image/gif” sizes=“16x16" -->
-<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEA Kurs</title>
-<script src="javaScript/myscript.js" type="module"></script>
+	<link rel="stylesheet" href="css/mycss.css">
+	<!-- link rel=“icon” href=“images/favicon.ico” type=“image/gif” sizes=“16x16" -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SEA Kurs</title>
+	<script src="javaScript/myscript.js" type="module"></script>
 </head>
-
 <body>
 	<h2>Gruppe SEA - Welle 4</h2>
 	<table class="table table-dark" id="tid001">
@@ -22,6 +17,9 @@
 			<th>Anrede</th>
 			<th>Vorname</th>
 			<th>Nachname</th>
+			<th>Geburtsdatum</th>
+			<th>Standort</th>
+			<th>E-Mail-Adresse</th>
 		</tr>
 <!--    
 		<tr>
@@ -35,14 +33,13 @@
 	</table>
 	<article>		
 		<h4><span class="blink"><strong>Jetzt hier bei uns anmelden!</strong></span></h4>
-			<form id="submit">
-				
+			<form>				
 				<label for="id000">ID</label>
 				<input type="text" id="id000" name="id"> 			
 				<label for="id001">Anrede:</label>
 				<select name="anrede" id="id001">
-					<option value="Frau">Frau</option>
-					<option value="Herr">Herr</option>
+					<option>Frau</option>
+					<option>Herr</option>
 					<option value="Sonstiges">Sonstiges</option>
 				</select>
 				<label for="id002">Vorname:</label>
@@ -50,18 +47,32 @@
 				<label for="id003">Nachname:</label>
 				<input type="text" id="id003" name="nachname">
 				<br><br>
-				<input type="submit" id="id004" value="Submit">
+				<label for="id004">Geburtsdatum:</label>
+				<input type="date" id="id004" name="datum">
+				<label for="id005">Standort:</label>
+				<select name="standort" id="id005">
+					<option>Berlin</option>
+					<option>Bonn</option>
+					<option>Budapest</option>
+					<option>Darmstadt</option>
+					<option>Koeln</option>
+					<option>Muenster</option>
+					<option>Magdeburg</option>
+				</select>
+				<label for="id006">E-Mail:</label>
+				<input type="email" id="id006" name="email">
 				<br><br>
-				<label for="id005">ID zum Loeschen:</label>
-				<input type="text" id="id005" name="delete">
-				<input type="submit" id="id006" value="Delete">			
-				<input type="submit" id="id007" value="Update">
-				<input type="submit" id="id008" value="Delete all">
+				<input type="submit" id="id010" value="Submit">
+				<!-- label for="id011">ID:</label>
+				<input type="text" id="id011" name="modify" -->
+				<input type="submit" id="id012" value="Delete">			
+				<input type="submit" id="id013" value="Update">
+				<input type="submit" id="id014" value="Delete all">
 			</form>
 	</article>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<footer>
-  		<img src="images/telekom.png">
+  		<img src="images/telekom.png" width=100% height=auto > 
   	</footer>	
 	<a href="https://www.telekom.de/start" id="id4711">
 		<botton>Werbung</botton>	
