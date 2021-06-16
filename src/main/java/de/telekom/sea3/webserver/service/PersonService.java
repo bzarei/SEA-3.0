@@ -18,11 +18,11 @@ public class PersonService {
 		this.personRepository = personRepository;
 	}
 	
-	public int getSize() {
-		return personRepository.getSize();
+	public int size() {
+		return personRepository.size();
 	}
 	
-	public Personen getPersons() {
+	public Personen getAll() {
 		return new Personen(personRepository.getAll());
 	}
 	

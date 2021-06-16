@@ -14,7 +14,7 @@ public class PersonRepository {
 		super();
 	}
 	
-	public int getSize() {
+	public int size() {
 		return personen.size();
 	}
 	

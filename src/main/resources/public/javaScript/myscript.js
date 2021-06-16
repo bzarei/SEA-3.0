@@ -70,7 +70,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 			//	document.getElementById("IdNachnameMaus").textContent = laufvariable.nachname;
 	}
 }
-
+// Verbindung mit dem Server für Anzeige aller Personen
 fetch("http://localhost:8080/json/persons/all")
 	.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);
