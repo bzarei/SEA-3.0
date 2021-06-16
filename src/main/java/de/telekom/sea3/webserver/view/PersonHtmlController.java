@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import de.telekom.sea3.webserver.service.PersonService;
 
-@Controller
+// Controller liefert html zurück
+@Controller 
 public class PersonHtmlController {
-
+	// sollte eigentlich aus der html-Datei eingelesen und befüllt werden: /templates/size.html
 	private static final String HTML_TEMPLATE = "\n"
 			+ "<!doctype html>\n"
 			+ "<html lang=de>\n"
