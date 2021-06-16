@@ -24,7 +24,8 @@ function getImg(anrede) {
 function oninputclick(event) {   // bei event-click
 	event.preventDefault();      // verhindert dass das event von Browser verwendet wird (verhindert GET-Request)
 	console.log("click");
-		
+	var id = document.getElementById("id000").value;
+	console.log(id);	
 	var anrede = document.getElementById("id001").value;
 	console.log(anrede);	
 	var vorname = document.getElementById("id002").value;
@@ -32,7 +33,7 @@ function oninputclick(event) {   // bei event-click
 	var nachname = document.getElementById("id003").value;
 	console.log(nachname);
 	
-	var jsonDataString = `{"anrede": "${anrede}", "vorname": "${vorname}", "nachname": "${nachname}"}`;
+	var jsonDataString = `{"id": "${id}","anrede": "${anrede}", "vorname": "${vorname}", "nachname": "${nachname}"}`;
 		console.log(jsonDataString);
 		
 	fetch("http://localhost:8080/json/person", {
@@ -44,8 +45,26 @@ function oninputclick(event) {   // bei event-click
 	});   // fetch ist eigentlich PUSH wir wollen json an Server geben	
 }
 
+function onDeleteClick(event) {   
+	event.preventDefault();      	
+	var id = document.getElementById("id005").value;
+	fetch(`http://localhost:8080/json/person/${id}`, {
+		method: 'DELETE'
+	});	
+}
+
+// Submit
 var input = document.getElementById("id004");
 input.addEventListener("click",oninputclick);
+
+
+// Delete
+var input = document.getElementById("id006");
+input.addEventListener("click",onDeleteClick);
+
+/* Update
+var input = document.getElementById("id007");
+input.addEventListener("click",onUpdateClick);*/
 
 function getJson(meta) { 	// meta beinhaltet json mit allen kommunikations-metadaten
 	return meta.json();	    // meta.json ist der reine json-inhalt
@@ -53,7 +72,6 @@ function getJson(meta) { 	// meta beinhaltet json mit allen kommunikations-metad
 
 // Eine Zelle ersetzen
 function getTxtFromJsonUndPackInsHTML(myjson) {
-
 	var tabelle = document.getElementById("tid001");
 	var i = 0;
 	for (var laufvariable of myjson.personen) {
@@ -70,7 +88,9 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 			//	document.getElementById("IdNachnameMaus").textContent = laufvariable.nachname;
 	}
 }
-// Verbindung mit dem Server für Anzeige aller Personen
+
+//console.log("Get ALL");
+// Verbindung mit dem Server für Anzeige aller Personen bzw. fetch lädt die Seite auf dem Server
 fetch("http://localhost:8080/json/persons/all")
 	.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);

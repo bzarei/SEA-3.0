@@ -26,8 +26,15 @@ public class PersonRepository {
 		return personen;
 	}
 
-	public boolean remove(Person person) {
-		return personen.remove(person);
+	public void remove(int id) {
+		System.out.println("Size vor dem Löschen: " + personen.size());
+		for (int i = 0; i < personen.size(); i++) {
+			if (personen.get(i).getId() == id) {
+				System.out.println(String.format("Id: %s wird gelöscht",personen.get(i).getId()));
+				personen.remove(i);
+			}	
+		}
+		System.out.println("Size nach dem Löschen: " + personen.size());
 	}
 	
 }

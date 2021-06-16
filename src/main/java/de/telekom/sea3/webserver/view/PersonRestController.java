@@ -12,7 +12,9 @@ import de.telekom.sea3.webserver.model.Personen;
 import de.telekom.sea3.webserver.model.Size;
 import de.telekom.sea3.webserver.service.PersonService;
 
-// mit dieser Annotation braucht man @ResponseBody nicht mehr
+/** mit dieser Annotation braucht man @ResponseBody nicht mehr. 
+ *	RestController liefert json zurück.
+ */
 @RestController 
 public class PersonRestController {
 
@@ -63,9 +65,9 @@ public class PersonRestController {
 	 * @see <a href="http://localhost:8080/json/person">http://localhost:8080/json/person</a>
 	 * @return
 	 */
-	@DeleteMapping("/json/person")  
-	public Person removePerson(@RequestBody Person person) {
-		return personService.remove(person);
+	@DeleteMapping("/json/person/{id}")  
+	public void removePerson(@PathVariable("id") int id) {
+		personService.remove(id);
 	}
 	
 }
