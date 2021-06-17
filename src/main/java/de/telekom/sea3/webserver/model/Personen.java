@@ -18,5 +18,9 @@ public class Personen {
 	public void setPersonen(List<Person> personen) {
 		this.personen = personen;
 	}
+	
+	public List<Person> getPersones() {
+		return personen;
+	}
 
 }
