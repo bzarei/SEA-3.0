@@ -2,6 +2,7 @@ package de.telekom.sea3.webserver.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import de.telekom.sea3.webserver.service.PersonService;
@@ -32,5 +33,12 @@ public class PersonHtmlController {
 	@ResponseBody         // somit sagen wir dem Spring dass die Rückgabe-html String die Antwort in body ist
 	public String getSize() {  // Rückgabe ist html 
 		return String.format(HTML_TEMPLATE, personService.size());
+	}
+	
+	@GetMapping("/count")  // URL: "http://localhost:8080/count"  über diese Url wird die Methode getCount() erreicht
+	public String getCount(Model model) {  // Rückgabe ist html
+		String str = "Baharak";
+		model.addAttribute("name", str); // "name" kommt aus count.html:  <h1 th:text="Hello ${name}!"></h1>
+		return "count";
 	}
 }
