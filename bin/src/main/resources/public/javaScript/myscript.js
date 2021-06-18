@@ -31,16 +31,15 @@ function oninputclick(event) {   // bei event-click
 	var date = document.getElementById("id004").value;
 	var ort = document.getElementById("id005").value;
 	var email = document.getElementById("id006").value;
+	
 	var jsonDataString = `{"id":"${id}","anrede":"${anrede}","vorname":"${vorname}","nachname":"${nachname}","birthDate":"${date}","standort":"${ort}","email":"${email}"}`;
-	console.log(jsonDataString);
 		
-	fetch("http://localhost:8080/json/person", {
+	fetch("/json/person", {
 		method: 'POST',
 		body: jsonDataString,
-		headers: {
-			'Content-Type': 'application/json'
-        } 		    
-	});   // fetch ist eigentlich PUSH wir wollen json an Server geben	
+		headers: { 'Content-Type': 'application/json' } 		    
+	});	
+	resetById(idform);
 }
 
 // Update: aus dem Browser einlesen und an den Server updaten (method: PUT)
@@ -55,12 +54,10 @@ function onUpdateclick(event) {
 	var email = document.getElementById("id006").value;
 	var jsonDataString = `{"id":"${id}","anrede":"${anrede}","vorname":"${vorname}","nachname":"${nachname}","birthDate":"${date}","standort":"${ort}","email":"${email}"}`;
 		
-	fetch("http://localhost:8080/json/person", {
+	fetch("/json/person", {
 		method: 'PUT',
 		body: jsonDataString,
-		headers: {
-			'Content-Type': 'application/json'
-        } 		    
+		headers: { 'Content-Type': 'application/json' } 		    
 	});   		
 }
 
@@ -68,19 +65,30 @@ function onUpdateclick(event) {
 function onDeleteClick(event) {   
 	event.preventDefault();      	
 	var id = document.getElementById("id000").value;  // old id011
-	fetch(`http://localhost:8080/json/person/${id}`, {
+	fetch(`/json/person/${id}`, {
 		method: 'DELETE'
 	});	
 }
 
-function getJson(meta) { 	// meta beinhaltet json mit allen kommunikations-metadaten
-	return meta.json();	    // meta.json ist der reine json-inhalt
+function getJson(serverResponse) { 	// serverResponse beinhaltet json mit allen kommunikations-metadaten
+	return serverResponse.json();	// .json ist der reine json-inhalt
 }
 	
 // Json vom Server wird in Browser ausgegeben
-function getTxtFromJsonUndPackInsHTML(myjson) {
+function getTxtFromJsonUndPackInsHTMLForTable(myjson) {
 	var tabelle = document.getElementById("tid001");
-//  var i = 0;
+//	var i = 0;
+	
+/*	//clean up table (shamelessly copied from Stackverflow)
+	//if (tabelle.getElementsByTagName('tr').length == 1) {
+	//if (i == 0) {
+		Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
+  			function(item) {
+    		item.remove();
+		}); 
+	}
+*/	
+	// table wird neu gebaut
 	for (var laufvariable of myjson.personen) {
 		tabelle.insertAdjacentHTML("beforeend",
 			"<tr>"
@@ -93,20 +101,31 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 			+ "<td>" + laufvariable.birthDate + "</td>"
 			+ "<td>" + laufvariable.standort + "</td>"
 			+ "<td>" + laufvariable.email + "</td>"
-			+ "</tr>")
+			+ "</tr>");
+//			++i;
 			//	document.getElementById("IdAnredeHerr").textContent = laufvariable.anrede;
 			//	document.getElementById("IdVornameMicki").textContent = laufvariable.vorname;
 			//	document.getElementById("IdNachnameMaus").textContent = laufvariable.nachname;
-	}
+//	}
+}
+
+function resetById(id) {
+	document.getElementById(id).reset();
+}
+
+function onRefreshClick(event) {
+	// change HTML content of table
+	document.getElementById(tid001).innerHTML="";
+	refreshTable();
 }
 
 function refreshTable() { 
-	document.getElementById("idform").reset();
 	// Verbindung mit dem Server für Anzeige aller Personen bzw. fetch lädt die Seite auf dem Server
-	fetch("http://localhost:8080/json/persons/all")
-		.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
-		.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);
+	fetch("/json/persons/all")
+		.then(getJson) 				  	 // entspricht: .then( irgendwas => irgendwas.json() )
+		.then(getTxtFromJsonUndPackInsHTMLForTable)  // entpricht: cell.textContent = myjson.personen[0].vorname);
 }
+
 refreshTable();
 	
 // Submit
@@ -118,8 +137,11 @@ document.getElementById("id012").addEventListener("click",onDeleteClick);
 // Update
 document.getElementById("id013").addEventListener("click",onUpdateClick);
 
+// Delete All
+//document.getElementById("id014").addEventListener("click",onDeleteAll);
 
-
+// Refresh
+document.getElementById("id015").addEventListener("click",onRefreshClick);
 
 
 		

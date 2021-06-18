@@ -57,9 +57,7 @@ function onUpdateclick(event) {
 	fetch("/json/person", {
 		method: 'PUT',
 		body: jsonDataString,
-		headers: {
-			'Content-Type': 'application/json'
-        } 		    
+		headers: { 'Content-Type': 'application/json' } 		    
 	});   		
 }
 
@@ -76,20 +74,28 @@ function getJson(serverResponse) { 	// serverResponse beinhaltet json mit allen 
 	return serverResponse.json();	// .json ist der reine json-inhalt
 }
 	
-// Json vom Server wird in Browser ausgegeben
+/**
+* Json wird vom Server in Browser ausgegeben
+* hier wird geprüft, ob Liste der Teilnehmern noch leer ist:
+* wenn ja, wird table-header anhand remove ausgeblendet
+* (class .hideit in mycss.css)
+* und wenn mindestens eine Person submitet ist soll die Tabelle nach dem Refresh mit header angezeigt werden.    
+*/
 function getTxtFromJsonUndPackInsHTMLForTable(myjson) {
-	var tabelle = document.getElementById("tid001");
-	//var i = 0;
-	
-	//clean up table (shamelessly copied from Stackverflow)
-	/*Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
-  		function(item) {
-    	item.remove();
-	}); */
+//	var i = 0;	
+	var t_header = document.getElementById("thid001");
+	var t_body = document.getElementById("tbid001");
+
+	if (myjson.personen.length == 0) {	
+		t_header.classList.add("hideit");     // table-header unsichtbar      
+	} 
+	else {
+		t_header.classList.remove("hideit");  // table-header sichtbar
+	}		
 	
 	// table wird neu gebaut
 	for (var laufvariable of myjson.personen) {
-		tabelle.insertAdjacentHTML("beforeend",
+		t_body.insertAdjacentHTML("beforeend",
 			"<tr>"
 //		    + `<td> ${++i} </td>`
 			+ "<td>" + laufvariable.id + "</td>"
@@ -103,7 +109,6 @@ function getTxtFromJsonUndPackInsHTMLForTable(myjson) {
 			+ "</tr>")
 			//	document.getElementById("IdAnredeHerr").textContent = laufvariable.anrede;
 			//	document.getElementById("IdVornameMicki").textContent = laufvariable.vorname;
-			//	document.getElementById("IdNachnameMaus").textContent = laufvariable.nachname;
 	}
 }
 
@@ -112,11 +117,12 @@ function resetById(id) {
 }
 
 function onRefreshClick(event) {
-	// change HTML content of table
-	document.getElementById(tid001).innerHTML="";
+	document.getElementById(tbid001).innerHTML="";
 	refreshTable();
 }
 
+/* bei jedem neu laden dieser Seite "/index.html" wird diese Funktion aufgerufen und die Tabelle
+   wird neu gebaut */
 function refreshTable() { 
 	// Verbindung mit dem Server für Anzeige aller Personen bzw. fetch lädt die Seite auf dem Server
 	fetch("/json/persons/all")

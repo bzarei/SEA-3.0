@@ -47,6 +47,10 @@ td {
 	text-align: center;
 }
 
+.hideit {
+	display:none	
+}
+
 /* Style of blinking text */
 .blink {
     animation-name: animation_blink;
