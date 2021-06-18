@@ -6,7 +6,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	</head>
 	<body>
-		<h1 th:text="|Size: ${size3}|">Size</h1> 
-		<h1>Size <span th:text="${size3}">0</span></h1>
+		<h1 th:text="|Hello ${name}!|"></h1>  <!-- thymeleaf braucht Prefix "th" -->
+		<h1 th:text="${name}">Welcome!</h1>
 	</body>
 </html>
