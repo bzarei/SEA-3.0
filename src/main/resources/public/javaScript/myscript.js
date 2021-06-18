@@ -31,8 +31,8 @@ function oninputclick(event) {   // bei event-click
 	var date = document.getElementById("id004").value;
 	var ort = document.getElementById("id005").value;
 	var email = document.getElementById("id006").value;
+	
 	var jsonDataString = `{"id":"${id}","anrede":"${anrede}","vorname":"${vorname}","nachname":"${nachname}","birthDate":"${date}","standort":"${ort}","email":"${email}"}`;
-	console.log(jsonDataString);
 		
 	fetch("/json/person", {
 		method: 'POST',
@@ -77,9 +77,17 @@ function getJson(serverResponse) { 	// serverResponse beinhaltet json mit allen 
 }
 	
 // Json vom Server wird in Browser ausgegeben
-function getTxtFromJsonUndPackInsHTML(myjson) {
+function getTxtFromJsonUndPackInsHTMLForTable(myjson) {
 	var tabelle = document.getElementById("tid001");
-//  var i = 0;
+	//var i = 0;
+	
+	//clean up table (shamelessly copied from Stackverflow)
+	/*Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
+  		function(item) {
+    	item.remove();
+	}); */
+	
+	// table wird neu gebaut
 	for (var laufvariable of myjson.personen) {
 		tabelle.insertAdjacentHTML("beforeend",
 			"<tr>"
@@ -99,23 +107,21 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 	}
 }
 
-function resetTable() {
-	Array.prototype.slice.call
-	(document.getElementsByTagName('tr')).forEach(
- 	function(item) {
- 		item.remove();
-    });
-}
-
 function resetById(id) {
 	document.getElementById(id).reset();
+}
+
+function onRefreshClick(event) {
+	// change HTML content of table
+	document.getElementById(tid001).innerHTML="";
+	refreshTable();
 }
 
 function refreshTable() { 
 	// Verbindung mit dem Server für Anzeige aller Personen bzw. fetch lädt die Seite auf dem Server
 	fetch("/json/persons/all")
-		.then(getJson) 					  	 // entspricht: .then( irgendwas => irgendwas.json() )
-		.then(getTxtFromJsonUndPackInsHTML)  // entpricht: cell.textContent = myjson.personen[0].vorname);
+		.then(getJson) 				  	 // entspricht: .then( irgendwas => irgendwas.json() )
+		.then(getTxtFromJsonUndPackInsHTMLForTable)  // entpricht: cell.textContent = myjson.personen[0].vorname);
 }
 
 refreshTable();
@@ -132,6 +138,8 @@ document.getElementById("id013").addEventListener("click",onUpdateClick);
 // Delete All
 //document.getElementById("id014").addEventListener("click",onDeleteAll);
 
+// Refresh
+document.getElementById("id015").addEventListener("click",onRefreshClick);
 
 
 		
