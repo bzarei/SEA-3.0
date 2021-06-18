@@ -39,13 +39,18 @@ public class PersonRepository {
 		}
 	}
 
-	public void update(Person neu) {
+	public Person update(int id, Person p) {
 		for (int i = 0; i < personen.size(); i++) {
-			if (personen.get(i).getId() == neu.getId()) {
+			if (personen.get(i).getId() == p.getId()) {
 				System.out.println(String.format("Id: %s wird aktualisiert",personen.get(i).getId()));
-				personen.set(i, neu);
+				return personen.set(i, p);
 			}	
 		}
+		return null;
+	}
+
+	public void removeAll() {
+		personen.removeAll(getAll());
 	}		
 }
 
