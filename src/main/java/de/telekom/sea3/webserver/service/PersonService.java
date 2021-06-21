@@ -44,7 +44,11 @@ public class PersonService {
 		personRepository.remove(id);
 	}
 	
-//	public Person update(Integer id, Person p) {
-//		return personRepository.update(id,p);
-//	}
+	public Person update(Integer id, Person p) {
+		return personRepository.update(id,p);
+	}
+
+	public void removeAll() {
+		personRepository.removeAll();		
+	}
 }

@@ -71,13 +71,18 @@ public class PersonRestController {
 		personService.remove(id);
 	}
 	
+	@DeleteMapping("/json/person/all")  
+	public void removeAllPersons() {
+		personService.removeAll();
+	}
+	
 	/**
 	 * @see <a href="http://localhost:8080/json/person/{id}">http://localhost:8080/json/person/{id}</a>
 	 * @return
 	 */
-//	@PutMapping("/json/person/{id}")  
-//	public Person updatePerson(@PathVariable("id") int id, Person neu) {
-//		return personService.update(id, neu);
-//	}
+	@PutMapping("/json/person/{id}")  
+	public Person updatePerson(@PathVariable("id") int id, @RequestBody Person p) {
+		return personService.update(id, p);
+	}
 	
 }

@@ -19,7 +19,10 @@ public class PersonRepository {
 	}
 	
 	public boolean add(Person person) {
-		return personen.add(person);
+		if (get(person.getId())) {
+			return false;
+		}
+		return personen.add(person);  // add from: java.util.List
 	}
 	
 	public List<Person> getAll() {
@@ -38,14 +41,29 @@ public class PersonRepository {
 			}	
 		}
 	}
-
-	public void update(Person neu) {
+	
+	public boolean get(int id) {
 		for (int i = 0; i < personen.size(); i++) {
-			if (personen.get(i).getId() == neu.getId()) {
-				System.out.println(String.format("Id: %s wird aktualisiert",personen.get(i).getId()));
-				personen.set(i, neu);
+			if (personen.get(i).getId() == id) {
+				System.out.println("Person ist bereits angemeldet");
+				return true;
 			}	
 		}
+		return false;
+	}
+
+	public Person update(int id, Person p) {
+		for (int i = 0; i < personen.size(); i++) {
+			if (personen.get(i).getId() == p.getId()) {
+				System.out.println(String.format("Id: %s wird aktualisiert",personen.get(i).getId()));
+				return personen.set(i, p);
+			}	
+		}
+		return null;
+	}
+
+	public void removeAll() {
+		personen.removeAll(getAll());
 	}		
 }
 

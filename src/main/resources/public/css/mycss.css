@@ -17,23 +17,44 @@ h4 { text-align: center; }
 
 p,a { color: #f9076d; }
 
-/* Style of form */
 form {
 	text-align: center;
 }
 
-/* Style of table */
 table {
 	caption-side: bottom;
-	border-collapse: collapse;
-	box-sizing: border-box;
-	vertical-align: middle;
+ 	border-collapse: separate; /*collapse; */
+	box-sizing: border-box; 
+ 	vertical-align: middle;
 	width: 100%;
 	margin-bottom: 1rem;
 	color: #204a87;
 	vertical-align: top;
 	border-color: #888a85;
 	background-color: #ffffff;
+}
+
+table.input {
+	background-color: inherit;
+	border: unset;	
+}
+
+table.input td {
+	border: unset;
+	text-align: left;
+}
+
+table.input select {
+	width: 60%;
+}
+
+tr.button {
+	min-height: 50pt;
+}
+
+td.button {
+	height: 100%;
+	vertical-align: bottom;
 }
 
 th {
@@ -45,6 +66,11 @@ th {
 td {
 	border: 1px solid #bbc0b8;
 	text-align: center;
+}
+
+/* Visibility */
+.hideit {
+	display:none;	
 }
 
 /* Style of blinking text */
@@ -60,3 +86,14 @@ td {
     50% { opacity: 0.1; }
     100% { opacity: 1; }    
 }
+
+.tableFixHead {
+	overflow-y: auto;
+	height: 230px;
+}
+
+.tableFixHead thead th {
+	position: sticky;
+	top: 0;
+}
+
