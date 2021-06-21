@@ -19,7 +19,10 @@ public class PersonRepository {
 	}
 	
 	public boolean add(Person person) {
-		return personen.add(person);
+		if (get(person.getId())) {
+			return false;
+		}
+		return personen.add(person);  // add from: java.util.List
 	}
 	
 	public List<Person> getAll() {
@@ -37,6 +40,16 @@ public class PersonRepository {
 				personen.remove(i);
 			}	
 		}
+	}
+	
+	public boolean get(int id) {
+		for (int i = 0; i < personen.size(); i++) {
+			if (personen.get(i).getId() == id) {
+				System.out.println("Person ist bereits angemeldet");
+				return true;
+			}	
+		}
+		return false;
 	}
 
 	public Person update(int id, Person p) {

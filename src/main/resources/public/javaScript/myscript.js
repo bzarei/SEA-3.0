@@ -89,7 +89,7 @@ function getJson(serverResponse) { 	// serverResponse beinhaltet json mit allen 
 * und wenn mindestens eine Person submitet ist soll die Tabelle nach dem Refresh mit header angezeigt werden.    
 */
 function getTxtFromJsonUndPackInsHTMLForTable(myjson) {
-//	var i = 0;	
+	var i = 0;
 	var t_header = document.getElementById("thid001");
 	var t_body = document.getElementById("tbid001");
 
@@ -104,9 +104,9 @@ function getTxtFromJsonUndPackInsHTMLForTable(myjson) {
 	for (var laufvariable of myjson.personen) {
 		t_body.insertAdjacentHTML("beforeend",
 			"<tr>"
-//		    	+ `<td> ${++i} </td>` // id automatisch vergeben; Neu: Id wird im Browser gelesen und gespeichert
-				+ "<td>" + laufvariable.id + "</td>"
+		    	+ `<td> ${++i} </td>` // id automatisch vergeben; Neu: Id wird im Browser gelesen und gespeichert
 				+ "<td><img src='" + getPictoImg(laufvariable.anrede)+"'+ width=25px height=25px></td>"
+				+ "<td>" + laufvariable.id + "</td>"
 				+ "<td>" + laufvariable.anrede + "</td>"
 				+ "<td>" + laufvariable.vorname + "</td>"
 				+ "<td>" + laufvariable.nachname + "</td>"
